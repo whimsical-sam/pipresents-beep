@@ -218,7 +218,7 @@ class VideoPlayer(Player):
         # start show state machine
         self.start_state_machine_show()
         self.video_start_timestamp = self.omx.video_start_timestamp;
-        self.mon.log(self,"Timestamp from show starting: "+self.omx.video_start_timestamp)
+        self.mon.log(self,"Timestamp from show starting: "+str(self.omx.video_start_timestamp))
 
     # UNLOAD - abort a load when omplayer is loading or loaded
     def unload(self):
