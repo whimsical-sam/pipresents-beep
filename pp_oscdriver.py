@@ -277,7 +277,7 @@ class OSCDriver(object):
         for arg in arg_list:
             # print arg
             msg.append(arg)
-            msg.append(str(round(time.time())))
+            msg.append(str(round(time.time()*1000)))
         try:
             self.output_client.sendto(msg,(ip,int(self.reply_listen_port)))
             self.mon.log(self,'Sent OSC command at '+str(round(time.time()*1000))+': '+osc_address+' '+' '.join(arg_list) + ' to '+ ip +':'+self.reply_listen_port)
