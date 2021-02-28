@@ -49,7 +49,7 @@ class VideoPlayer(Player):
                          command_callback)
         # print ' !!!!!!!!!!!videoplayer init'
         self.mon.trace(self,'')
-        
+        self.video_start_timestamp=0
         self.dm=DisplayManager()
 
         # get player parameters
@@ -217,7 +217,8 @@ class VideoPlayer(Player):
 
         # start show state machine
         self.start_state_machine_show()
-
+		self.video_start_timestamp = self.omx.video_start_timestamp;
+		self.mon.log(self,"Timestamp from show starting: "+self.omx.video_start_timestamp)
 
     # UNLOAD - abort a load when omplayer is loading or loaded
     def unload(self):

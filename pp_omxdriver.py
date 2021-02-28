@@ -57,7 +57,7 @@ class OMXDriver(object):
         self.end_play_reason='nothing'
         self.duration=0
         self.video_position=0
-        
+        self.video_start_timestamp=0
         self.pause_at_end_required=False
         self.paused_at_end=False
         self.pause_at_end_time=0
@@ -209,6 +209,8 @@ class OMXDriver(object):
             unpause_show_success=self.unpause(' to start showing')
             # print 'unpause for show',self.paused
             if unpause_show_success is True:
+				self.video_start_timestamp = round(time()*1000)
+				self.mon.log(self,"Video started at: "+self.video_start_timestamp);
                 pass
                 # print self.id,' unpause for show success', self.video_position
             else:
@@ -276,6 +278,7 @@ class OMXDriver(object):
                     self.paused = False
                     self.paused_at_start='done'
                     self.set_volume()
+					
                     return True
 
                 if status == 'Failed':

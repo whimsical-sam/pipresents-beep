@@ -130,8 +130,8 @@ class OSCDriver(object):
                 self.mon.log(self, 'sending commands to slaves on port: '+self.reply_listen_port)
 
                 #start the output reply server
-                self.mon.log(self, 'listen to replies from slave units using: ' + self.this_unit_ip+':'+self.reply_listen_port)
-                self.output_reply_server=myOSCServer((self.this_unit_ip,int(self.reply_listen_port)),self.output_client)
+                self.mon.log(self, 'listen to replies from slave units using: ' + self.this_unit_ip+':9090 instead of at '+self.reply_listen_port)
+                self.output_reply_server=myOSCServer((self.this_unit_ip,int(9090)),self.output_client)
                 self.add_default_handler(self.output_reply_server)
                 self.add_output_reply_handlers(self.output_reply_server)
         
