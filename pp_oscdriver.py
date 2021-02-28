@@ -16,7 +16,7 @@ import os
 from pp_utils import Monitor
 from pp_oscconfig import OSCConfig
 from pp_timeofday import TimeOfDay
-
+import time
 import threading
 import configparser
 import OSC_plus as OSC
@@ -280,7 +280,7 @@ class OSCDriver(object):
             
         try:
             self.output_client.sendto(msg,(ip,int(self.reply_listen_port)))
-            self.mon.log(self,'Sent OSC command: '+osc_address+' '+' '.join(arg_list) + ' to '+ ip +':'+self.reply_listen_port)
+            self.mon.log(self,'Sent OSC command at '+str(round(time.time()*1000))+': '+osc_address+' '+' '.join(arg_list) + ' to '+ ip +':'+self.reply_listen_port)
         except Exception as e:
             self.mon.warn(self,'error in client when sending OSC command: '+ str(e))
 

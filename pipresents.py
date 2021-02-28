@@ -41,6 +41,8 @@ from pp_countermanager import CounterManager
 from pp_beepplayer import BeepPlayer
 from pp_audiomanager import AudioManager
 
+globalVideoTimestampStart = 0
+
 class PiPresents(object):
 
     def pipresents_version(self):
